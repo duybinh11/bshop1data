@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:background="@drawable/img_background"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+    <TextView
+        android:layout_marginTop="150dp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:textSize="50dp"
+        android:text="B Shop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <androidx.cardview.widget.CardView
+        android:layout_marginTop="30dp"
+        app:cardCornerRadius="20dp"
+        android:layout_marginHorizontal="30dp"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_margin="15dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <EditText
+                android:layout_marginVertical="10dp"
+                android:hint="User"
+                android:id="@+id/edtUser"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <EditText
+                android:layout_marginBottom="10dp"
+                android:inputType="textPassword"
+                android:hint="PassWord"
+                android:id="@+id/edtPass"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <TableLayout
+                android:layout_marginVertical="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TableRow>
+                    <Button android:text="Login"
+                        android:background="@drawable/btn_format"
+                        android:layout_marginHorizontal="30dp"
+                        android:id="@+id/btnLogin" />
+                    <Button android:text="Sign Up"
+                        android:background="@drawable/btn_format"
+                        android:layout_marginHorizontal="30dp"
+                        android:id="@+id/btnSignUp" />
+                </TableRow>
+            </TableLayout>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+
+</LinearLayout>
