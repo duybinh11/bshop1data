@@ -9,6 +9,15 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.IOException;
+
+import Api.ApiClient;
+import Api.ApiService;
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class SignUp extends AppCompatActivity {
     EditText edtUser,edtPass1,edtPass2,edtAdress,edtSdt;
     Button btnCofirm,btnCannel;
@@ -42,6 +51,22 @@ public class SignUp extends AppCompatActivity {
                     if(!check_pass(pass1,pass2)){
                         Toast.makeText(SignUp.this, "Mật khẩu không khớp", Toast.LENGTH_SHORT).show();
                     }else{
+                        ApiClient.getRetrofit().create(ApiService.class).putUSer(user,pass1,address,phone).enqueue(new Callback<ResponseBody>() {
+                            @Override
+                            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                                String x= null;
+                                try {
+                                    x = response.body().string();
+                                } catch (IOException e) {
+                                    throw new RuntimeException(e);
+                                }
+                                Toast.makeText(SignUp.this, x, Toast.LENGTH_SHORT).show();
+                            }
+                            @Override
+                            public void onFailure(Call<ResponseBody> call, Throwable t) {
+
+                            }
+                        });
                         Intent intent = new Intent(SignUp.this, MainActivity.class);
                         intent.putExtra("user",user);
                         intent.putExtra("pass",pass1);
@@ -63,4 +88,5 @@ public class SignUp extends AppCompatActivity {
         }
         return  false;
     }
+
 }

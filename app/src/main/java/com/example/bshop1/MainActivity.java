@@ -33,6 +33,10 @@ public class MainActivity extends AppCompatActivity {
         public void onClick(View view) {
             switch (view.getId()){
                 case R.id.btnLogin:{
+                    if(edtUser.getText().toString().equals("a") && edtPass.getText().toString().equals("a")){
+                        Intent intent = new Intent(MainActivity.this,MainActivity2.class);
+                        startActivity(intent);
+                    }
                     break;
                 }
                 case R.id.btnSignUp:{
