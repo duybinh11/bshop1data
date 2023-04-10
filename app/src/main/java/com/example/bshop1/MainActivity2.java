@@ -2,13 +2,20 @@ package com.example.bshop1;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
+
+import fragment.cart;
+import fragment.home;
+import fragment.my;
 
 public class MainActivity2 extends AppCompatActivity {
     BottomNavigationView btnv ;
@@ -17,28 +24,31 @@ public class MainActivity2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
         anhXa();
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.frame,new home()).commit();
         btnv.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
                 switch (item.getItemId()){
                     case R.id.menuHome:{
-                        Toast.makeText(MainActivity2.this, "home", Toast.LENGTH_SHORT).show();
+                        fragmentTransaction.replace(R.id.frame,new home()).commit();
                         break;
                     }
                     case R.id.menuCart:{
-                        Toast.makeText(MainActivity2.this, "gio ham", Toast.LENGTH_SHORT).show();
+                        fragmentTransaction.replace(R.id.frame,new cart()).commit();
                         break;
                     }
                     case R.id.menuMy:{
-                        Toast.makeText(MainActivity2.this, "my", Toast.LENGTH_SHORT).show();
+                        fragmentTransaction.replace(R.id.frame,new my()).commit();
                         break;
                     }
                 }
-                return false;
+                return true;
             }
         });
     }
-    public void anhXa(){
+    public void anhXa() {
         btnv = findViewById(R.id.btnv);
     }
 }
