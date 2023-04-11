@@ -1,5 +1,6 @@
 package fragment;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -7,6 +8,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.transition.Slide;
 import android.view.LayoutInflater;
@@ -40,7 +42,7 @@ public class home extends Fragment {
     ImageSlider imsl;
     RecyclerView rccvBanChay,rccvNew;
     List<Item> itemListBanChay,itemListNew;
-
+    SwipeRefreshLayout swipeRefreshLayout;
     GridView gv;
     List<SlideModel> slideModelList;
     List<String> stringList;
@@ -56,7 +58,9 @@ public class home extends Fragment {
         initImageSlide();
         initBanChay();
         initNew();
+        swipeRefreshLayout.setOnRefreshListener(lamMoi);
     }
+    @SuppressLint("ResourceAsColor")
     public void anhXa(View view){
         itemListNew = new ArrayList<>();
         rccvNew = view.findViewById(R.id.rccvNew);
@@ -64,6 +68,7 @@ public class home extends Fragment {
         rccvBanChay = view.findViewById(R.id.rccvBanChay);
         imsl = view.findViewById(R.id.imsl);
         slideModelList = new ArrayList<>();
+        swipeRefreshLayout = view.findViewById(R.id.refresh);
     }
     public void initImageSlide(){
         ApiClient.getRetrofit().create(ApiService.class).getImg().enqueue(new Callback<List<String>>() {
@@ -106,4 +111,12 @@ public class home extends Fragment {
         rccvNew.setLayoutManager(linearLayoutManager);
         rccvNew.setAdapter(adapter);
     }
+    SwipeRefreshLayout.OnRefreshListener lamMoi = new SwipeRefreshLayout.OnRefreshListener() {
+        @Override
+        public void onRefresh() {
+            Toast.makeText(getContext(), "loading", Toast.LENGTH_SHORT).show();
+            swipeRefreshLayout.setRefreshing(false);
+        }
+    };
+
 }
