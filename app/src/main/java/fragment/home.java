@@ -1,6 +1,7 @@
 package fragment;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -17,6 +18,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.denzcoskun.imageslider.ImageSlider;
@@ -24,6 +26,7 @@ import com.denzcoskun.imageslider.models.SlideModel;
 import com.example.bshop1.BanChayAdapter;
 import com.example.bshop1.NewAdapter;
 import com.example.bshop1.R;
+import com.example.bshop1.Search;
 
 
 import java.lang.reflect.Array;
@@ -40,6 +43,7 @@ import retrofit2.Response;
 
 public class home extends Fragment {
     ImageSlider imsl;
+    TextView tvSearch;
     RecyclerView rccvBanChay,rccvNew;
     List<Item> itemListBanChay,itemListNew;
     SwipeRefreshLayout swipeRefreshLayout;
@@ -59,7 +63,18 @@ public class home extends Fragment {
         initBanChay();
         initNew();
         swipeRefreshLayout.setOnRefreshListener(lamMoi);
+        tvSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), Search.class);
+                startActivity(intent);
+            }
+        });
+
     }
+
+
+
     @SuppressLint("ResourceAsColor")
     public void anhXa(View view){
         itemListNew = new ArrayList<>();
@@ -68,6 +83,7 @@ public class home extends Fragment {
         rccvBanChay = view.findViewById(R.id.rccvBanChay);
         imsl = view.findViewById(R.id.imsl);
         slideModelList = new ArrayList<>();
+        tvSearch = view.findViewById(R.id.tvSearch);
         swipeRefreshLayout = view.findViewById(R.id.refresh);
     }
     public void initImageSlide(){
