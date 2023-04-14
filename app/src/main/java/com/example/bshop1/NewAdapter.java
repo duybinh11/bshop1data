@@ -1,6 +1,8 @@
 package com.example.bshop1;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +21,7 @@ import Model.Item;
 public class NewAdapter extends  RecyclerView.Adapter<NewAdapter.NewHolder>{
 
     List<Item> itemList;
+    Context context ;
 
     public NewAdapter(List<Item> itemList){
 
@@ -45,7 +48,9 @@ public class NewAdapter extends  RecyclerView.Adapter<NewAdapter.NewHolder>{
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(view.getContext(), itemList.get(position).getName(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(view.getContext(), "", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(holder.itemView.getContext(),ActivityCart.class);
+                context.startActivity(intent);
             }
         });
     }
@@ -65,6 +70,7 @@ public class NewAdapter extends  RecyclerView.Adapter<NewAdapter.NewHolder>{
             tvName = itemView.findViewById(R.id.tvName);
             tvCost = itemView.findViewById(R.id.tvCost);
             tvSl = itemView.findViewById(R.id.tvSL);
+            context = itemView.getContext();
         }
     }
 }

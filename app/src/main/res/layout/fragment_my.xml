@@ -1,14 +1,82 @@
 <LinearLayout
+    android:orientation="vertical"
+    android:layout_margin="10dp"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="fragment.my">
-
-
-    <TextView
+    <ImageView
+        android:src="@drawable/chelsea"
+        android:id="@+id/imgImg"
+        android:scaleType="center"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="my" />
+        android:layout_height="400dp"/>
+    <TableLayout
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TableRow >
+            <TextView
+                android:textColor="@color/black"
+                android:text="Id :"
+                android:textSize="25dp"
+                />
+            <TextView
+                android:layout_marginLeft="7dp"
+                android:id="@+id/tvId"
+
+                android:textSize="25dp"
+                />
+        </TableRow>
+        <TableRow >
+            <TextView
+                android:textColor="@color/black"
+                android:text="User :"
+                android:textSize="25dp"
+                />
+            <TextView
+                android:layout_marginLeft="7dp"
+                android:id="@+id/tvUser"
+                android:textSize="25dp"
+                />
+        </TableRow>
+        <TableRow >
+            <TextView
+                android:textColor="@color/black"
+                android:text="Tuổi :"
+                android:textSize="25dp"
+                />
+            <TextView
+                android:layout_marginLeft="7dp"
+                android:id="@+id/tvOld"
+                android:textSize="25dp"
+                />
+        </TableRow>
+        <TableRow >
+            <TextView
+                android:textColor="@color/black"
+                android:text="Địa Chỉ :"
+                android:textSize="25dp"
+                />
+            <TextView
+                android:layout_marginLeft="7dp"
+                android:id="@+id/tvAddress"
+                android:textSize="25dp"
+                />
+        </TableRow>
+        <TableRow >
+            <TextView
+                android:textColor="@color/black"
+                android:text="SDT :"
+                android:textSize="25dp"
+                />
+            <TextView
+                android:layout_marginLeft="7dp"
+                android:id="@+id/tvPhone"
+                android:textSize="25dp"
+                />
+        </TableRow>
+    </TableLayout>
 
 </LinearLayout>
